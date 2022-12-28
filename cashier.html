@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="images/favicon.ico" type="image/ico" />
+
+    <title>Pharmacy Management System</title>
+
+    <!-- Bootstrap -->
+    <link href="cdn.datatables.net\1.10.20\css\jquery.dataTables.min.css" />
+    <link
+      href="vendors\bootstrap\dist\css\bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      href="vendors\font-awesome\css\font-awesome.min.css"
+      rel="stylesheet"
+    />
+    <!-- Datatables -->
+    <link
+      href="vendors\datatables.net-bs\css\dataTables.bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="vendors\datatables.net-buttons-bs\css\buttons.bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="vendors\datatables.net-fixedheader-bs\css\fixedHeader.bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="vendors\datatables.net-responsive-bs\css\responsive.bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="vendors\datatables.net-scroller-bs\css\scroller.bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Custom Theme Style -->
+    <link href="build\css\custom.min.css" rel="stylesheet" />
+  </head>
+  <body>
+<!-- top navigation -->
+<div class="top_nav">
+    <div class="nav_menu">
+        <div class="nav toggle">
+          <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+        </div>
+        <nav class="nav navbar-nav">
+        <ul class=" navbar-right">
+          <li class="nav-item dropdown open" style="padding-left: 15px;">
+            <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
+              <img src="data:image/jpeg;base64,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" alt="">Danny
+            </a>
+            <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item"  href="javascript:;"><i class="fa fa-user pull-right"></i> Profile</a>
+              <a class="dropdown-item"  href="javascript:;"><i class="fa fa-cog pull-right"></i> Settings</a>
+              <a class="dropdown-item"  href="../"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+            <div class="">
+              <div class="page-title">
+                <div class="title_left">
+                  <h3><i class="fa fa-user"></i> Cashier</h3>
+                </div>
+              </div>
+  
+              <div class="clearfix"></div>
+  
+              <div class="row">
+                <div class="col-md-12 col-sm-12  ">
+                  <div class="x_panel">
+                    <div class="x_title">
+                      <h2>List of Cashiers</h2>
+                      <ul class="nav navbar-right panel_toolbox">
+                      <a href="add-cashier.php" class="btn btn-sm btn-info text-white"><i class="fa fa-user-plus"></i> Add Cashier</a>
+                      </ul>
+                      <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                    <table id="datatable" class="table table-striped table-bordered" style="width:100%">
+                        <thead>
+                          <tr>
+                            <th>Full Name</th>
+                            <th>Contact</th>
+                            <th>Email</th>
+                            <th>Account Status</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+  
+  
+                        <tbody>
+                          <tr>
+                            <td>Charde Marshall</td>
+                            <td>+6392978376192</td>
+                            <td>Charde1@gmail.com</td>
+                            <td><span class="btn btn-sm btn-success text-white">active</span></td>
+                            <td>
+                                <a class="btn btn-sm btn-success text-white"><i class="fa fa-edit"></i> edit</a>
+                                <a class="btn btn-sm btn-danger text-white"><i class="fa fa-trash"></i> delete</a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Ashton Cox</td>
+                            <td>+6396748976521</td>
+                            <td>Ashton2@gmail.com</td>
+                            <td><span class="btn btn-sm btn-success text-white">active</span></td>
+                            <td>
+                                <a class="btn btn-sm btn-success text-white"><i class="fa fa-edit"></i> edit</a>
+                                <a class="btn btn-sm btn-danger text-white"><i class="fa fa-trash"></i> delete</a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Cedric Lee</td>
+                            <td>+6399876876432</td>
+                            <td>Cedric3@gmail.com</td>
+                            <td><span class="btn btn-sm btn-danger text-white">inactive</span></td>
+                            <td>
+                                <a class="btn btn-sm btn-success text-white"><i class="fa fa-edit"></i> edit</a>
+                                <a class="btn btn-sm btn-danger text-white"><i class="fa fa-trash"></i> delete</a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>John Kelly</td>
+                            <td>+6395643654781</td>
+                            <td>John4@gmail.com</td>
+                            <td><span class="btn btn-sm btn-success text-white">active</span></td>
+                            <td>
+                                <a class="btn btn-sm btn-success text-white"><i class="fa fa-edit"></i> edit</a>
+                                <a class="btn btn-sm btn-danger text-white"><i class="fa fa-trash"></i> delete</a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>William Smith</td>
+                            <td>+6398974542342</td>
+                            <td>William@gmail.com</td>
+                            <td><span class="btn btn-sm btn-danger text-white">inactive</span></td>
+                            <td>
+                                <a class="btn btn-sm btn-success text-white"><i class="fa fa-edit"></i> edit</a>
+                                <a class="btn btn-sm btn-danger text-white"><i class="fa fa-trash"></i> delete</a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+    
+    <!-- jQuery -->
+    <script src="\vendors\jquery\dist\jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="\vendors\bootstrap\dist\js\bootstrap.bundle.min.js"></script>
+    <!-- Datatables -->
+    <script src="vendors\datatables.net\js\jquery.dataTables.min.js"></script>
+    <script src="vendors\datatables.net-bs\js\dataTables.bootstrap.min.js"></script>
+    <script src="vendors\datatables.net-buttons\js\dataTables.buttons.min.js"></script>
+    <script src="vendors\datatables.net-buttons-bs\js\buttons.bootstrap.min.js"></script>
+    <script src="vendors\datatables.net-buttons\js\buttons.flash.min.js"></script>
+    <script src="vendors\datatables.net-buttons\js\buttons.html5.min.js"></script>
+    <script src="vendors\datatables.net-buttons\js\buttons.print.min.js"></script>
+    <script src="vendors\datatables.net-fixedheader\js\dataTables.fixedHeader.min.js"></script>
+    <script src="vendors\datatables.net-keytable\js\dataTables.keyTable.min.js"></script>
+    <script src="vendors\datatables.net-responsive\js\dataTables.responsive.min.js"></script>
+    <script src="vendors\datatables.net-responsive-bs\js\responsive.bootstrap.js"></script>
+    <script src="vendors\datatables.net-scroller\js\dataTables.scroller.min.js"></script>
+    <script src="vendors\jszip\dist\jszip.min.js"></script>
+    <script src="vendors\pdfmake\build\pdfmake.min.js"></script>
+    <script src="vendors\pdfmake\build\vfs_fonts.js"></script>
+
+    <!-- Chart.js -->
+    <script src="vendors\Chart.js\Chart.min.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="build\js\custom.min.js"></script>
+  </body>
+</html>
+
